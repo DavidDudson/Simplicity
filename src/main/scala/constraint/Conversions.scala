@@ -27,21 +27,20 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-import constraint.Conversions
-import constraint.character.UpperAlpha._
+package constraint
 
 /**
- * Created by David J. Dudson on 19/01/15.
+ * Created by David J. Dudson on 21/01/15.
  *
  *
  */
-
-
-object Main extends App with Conversions {
-
-  println("Hello World")
-
-  print(A ++ B)
-
-
+trait Conversions {
+  //
+  //  def getType[T <: Constraint]()(implicit c:Char):Option[Constraint] = if(c == T.value) Some(T) else None
+  //
+  //  implicit class CharConversions(c:Char) {
+  //
+  //
+  //
+  //  }
 }

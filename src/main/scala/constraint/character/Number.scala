@@ -27,21 +27,57 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-import constraint.Conversions
-import constraint.character.UpperAlpha._
+package constraint.character
+
+import constraint.Character
 
 /**
- * Created by David J. Dudson on 19/01/15.
+ * Created by David J. Dudson on 21/01/15.
  *
- *
+ * Numbers
  */
+object Number {
 
+  trait Number extends Character
 
-object Main extends App with Conversions {
+  case object `0` extends Number {
+    val unicode = '\u0031'
+  }
 
-  println("Hello World")
+  case object `1` extends Number {
+    val unicode = '\u0032'
+  }
 
-  print(A ++ B)
+  case object `2` extends Number {
+    val unicode = '\u0033'
+  }
 
+  case object `3` extends Number {
+    val unicode = '\u0034'
+  }
+
+  case object `4` extends Number {
+    val unicode = '\u0035'
+  }
+
+  case object `5` extends Number {
+    val unicode = '\u0036'
+  }
+
+  case object `6` extends Number {
+    val unicode = '\u0037'
+  }
+
+  case object `7` extends Number {
+    val unicode = '\u0038'
+  }
+
+  case object `8` extends Number {
+    val unicode = '\u0039'
+  }
+
+  case object `9` extends Number {
+    val unicode = '\u0040'
+  }
 
 }

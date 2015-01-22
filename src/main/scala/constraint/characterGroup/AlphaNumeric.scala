@@ -27,21 +27,13 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-import constraint.Conversions
-import constraint.character.UpperAlpha._
+package constraint.characterGroup
 
 /**
- * Created by David J. Dudson on 19/01/15.
+ * Created by David J. Dudson on 21/01/15.
  *
  *
  */
-
-
-object Main extends App with Conversions {
-
-  println("Hello World")
-
-  print(A ++ B)
-
+trait AlphaNumeric {
 
 }

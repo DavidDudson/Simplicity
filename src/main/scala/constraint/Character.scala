@@ -27,21 +27,29 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-import constraint.Conversions
-import constraint.character.UpperAlpha._
+package constraint
+
+import util.InvalidOperationException
+
+import scalaz.Show
 
 /**
- * Created by David J. Dudson on 19/01/15.
+ * Created by David J. Dudson on 21/01/15.
  *
- *
+ * Main Constraint trait that all constraints derive from
  */
 
+trait Constraint {
+  def +(b: String) = throw InvalidOperationException("Default Any + String method not currently usable, throwing exception until workaround is made")
+}
 
-object Main extends App with Conversions {
+trait Character extends Constraint {
+  val unicode: Char
 
-  println("Hello World")
+  implicit class CharImpl[T <: Character](char1: T) extends Show[Character] {
+    def ++(char2: Character): Seq[Character] = Seq(char1, char2)
 
-  print(A ++ B)
-
+    def show(): Unit = println(char1)
+  }
 
 }

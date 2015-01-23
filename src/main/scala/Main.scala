@@ -27,8 +27,7 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-import constraint.Conversions
-import constraint.character.UpperAlpha._
+import constraint.Characters._
 
 /**
  * Created by David J. Dudson on 19/01/15.
@@ -37,11 +36,11 @@ import constraint.character.UpperAlpha._
  */
 
 
-object Main extends App with Conversions {
+object Main extends App {
 
   println("Hello World")
 
-  print(A ++ B)
+  println(_A)
 
 
 }

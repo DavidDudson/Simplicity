@@ -7,7 +7,8 @@ resolvers += "bintray/paulp" at "https://dl.bintray.com/paulp/maven"
 libraryDependencies ++= Seq(
   "org.scalaz" %% "scalaz-core" % "7.1.0",
   "com.chuusai" %% "shapeless" % "2.0.0",
-  "org.improving" %% s"psp-std" % "0.4.8"
+  "org.improving" %% s"psp-std" % "0.4.8",
+  "org.typelevel" %% "shapeless-scalaz" % "0.3"
 )
 
 initialCommands in console := "import psp.std._"

@@ -31,25 +31,32 @@ package constraint
 
 import util.InvalidOperationException
 
-import scalaz.Show
+import scala.language._
+
 
 /**
  * Created by David J. Dudson on 21/01/15.
  *
- * Main Constraint trait that all constraints derive from
+ * All Known Characters
  */
+//Todo replace string type with own AlphaString Type
 
-trait Constraint {
-  def +(b: String) = throw InvalidOperationException("Default Any + String method not currently usable, throwing exception until workaround is made")
-}
+object Characters {
 
-trait Character extends Constraint {
-  val unicode: Char
+  lazy val characterSet: Array[Character] = Array.ofDim(0x10FFFF)
 
-  implicit class CharImpl[T <: Character](char1: T) extends Show[Character] {
-    def ++(char2: Character): Seq[Character] = Seq(char1, char2)
+  sealed trait Character {
+    val char: Char
 
-    def show(): Unit = println(char1)
+    override def toString = s"$char"
+
+    def +(b: String) = throw InvalidOperationException("Default Any + String method not currently usable, throwing exception until workaround is made")
   }
 
+  sealed class _A(val char: Char) extends Character
+
+  case object _A extends _A('\u0041')
+
 }
+
+

@@ -27,16 +27,16 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-import nz.co.bigdavenz.simplicity.constraint.CharacterBlockLatin._
-
+package nz.co.bigdavenz.simplicity.traits
 
 /**
- * Created by David J. Dudson on 19/01/15.
+ * Created by David J. Dudson on 10/02/15.
  *
- * Main App for running
+ * Generic Name Interface
  */
+trait HasName {
+  val name: String
 
-object Main extends App {
-
- println(Null.toString)
+  //Replace By Alpha
+  override def toString: String = s"${super.toString} \n Name: $name"
 }

@@ -27,36 +27,18 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-package constraint
-
-import util.InvalidOperationException
-
-import scala.language._
-
+package nz.co.bigdavenz.simplicity.constraint
 
 /**
- * Created by David J. Dudson on 21/01/15.
+ * Created by David J. Dudson on 31/01/15.
  *
- * All Known Characters
+ *
  */
-//Todo replace string type with own AlphaString Type
+object CharacterCollections {
 
-object Characters {
+  object CharVector {
+    def apply[Bound <: CharType](a: Bound): Vector[Bound] = Vector[Bound](a)
 
-  lazy val characterSet: Array[Character] = Array.ofDim(0x10FFFF)
-
-  sealed trait Character {
-    val char: Char
-
-    override def toString = s"$char"
-
-    def +(b: String) = throw InvalidOperationException("Default Any + String method not currently usable, throwing exception until workaround is made")
+    //def apply[Bound <: CharType](a:Bound*):Vector[Bound] = Vector[Bound](a)
   }
-
-  sealed class _A(val char: Char) extends Character
-
-  case object _A extends _A('\u0041')
-
 }
-
-

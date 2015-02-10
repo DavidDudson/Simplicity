@@ -27,7 +27,7 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-package util
+package nz.co.bigdavenz.simplicity.util
 
 /*
  * Copyright (c) ${Year}, David J. Dudson

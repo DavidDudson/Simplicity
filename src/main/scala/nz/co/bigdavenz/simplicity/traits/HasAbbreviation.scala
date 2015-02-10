@@ -27,16 +27,18 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-import nz.co.bigdavenz.simplicity.constraint.CharacterBlockLatin._
+package nz.co.bigdavenz.simplicity.traits
 
+import shapeless.:+:
 
 /**
- * Created by David J. Dudson on 19/01/15.
+ * Created by David J. Dudson on 10/02/15.
  *
- * Main App for running
+ *
  */
+trait HasAbbreviation {
+  val abbreviation: String :+: List[String]
 
-object Main extends App {
-
- println(Null.toString)
+  //Todo Replace By Alpha
+  override def toString: String = s"${super.toString} \n Abbreviation: $abbreviation"
 }

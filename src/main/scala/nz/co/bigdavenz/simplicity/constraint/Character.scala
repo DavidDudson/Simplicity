@@ -27,57 +27,72 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-package constraint.character
+package nz.co.bigdavenz.simplicity.constraint
 
-import constraint.Character
+import nz.co.bigdavenz.simplicity.traits.{HasAbbreviation, HasName}
+import shapeless.{HNil, Nat}
 
 /**
- * Created by David J. Dudson on 21/01/15.
+ * Created by David J. Dudson on 4/02/15.
  *
- * Numbers
+ * How 
  */
-object Number {
 
-  trait Number extends Character
+trait HasChar {
+  val char: Char
 
-  case object `0` extends Number {
-    val unicode = '\u0031'
+  override def toString: String = s"${super.toString} \n Character: $char"
+}
+
+trait HasUnicode extends HasChar {
+  val unicode: Nat = char.toInt
+
+  //Replace By Hex
+  override def toString: String = s"${super.toString} \n Unicode: $unicode"
+}
+
+trait HasDecimal extends HasChar {
+  val decimal: String
+
+  override def toString: String = s"${super.toString} \n Decimal: $decimal"
+}
+
+sealed trait Character extends AnyRef with HasName {
+}
+
+sealed trait UnicodeCharacter extends Character with HasUnicode {
+  override def toString: String = s"Character : ${super.toString}"
+}
+
+sealed trait UnicodeCharacterBlock {
+  val start: Nat
+  //Replace by hex
+  val end: Nat //Replace by hex
+}
+
+case object CharacterBlockLatin extends UnicodeCharacterBlock {
+
+  override val start: Int = 0
+  override val end: Int = 1
+
+  sealed trait Null extends UnicodeCharacter with HasAbbreviation
+
+  case object Null extends Null {
+    override val char: Char = '\u0000'
+    override val name: String = "Null"
+    override val abbreviation: String = "NUL"
   }
 
-  case object `1` extends Number {
-    val unicode = '\u0032'
+}
+
+object CharacterImplicits {
+
+  implicit class CharImpl[A <: Character](a: A) {
+    def append[B <: Character](b: B) = a :: b :: HNil
   }
 
-  case object `2` extends Number {
-    val unicode = '\u0033'
-  }
+}
 
-  case object `3` extends Number {
-    val unicode = '\u0034'
-  }
-
-  case object `4` extends Number {
-    val unicode = '\u0035'
-  }
-
-  case object `5` extends Number {
-    val unicode = '\u0036'
-  }
-
-  case object `6` extends Number {
-    val unicode = '\u0037'
-  }
-
-  case object `7` extends Number {
-    val unicode = '\u0038'
-  }
-
-  case object `8` extends Number {
-    val unicode = '\u0039'
-  }
-
-  case object `9` extends Number {
-    val unicode = '\u0040'
-  }
+object Character {
 
 }

@@ -27,15 +27,27 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-package constraint.characterGroup
+package nz.co.bigdavenz.simplicity.constraint
 
-import constraint.Constraint
+import nz.co.bigdavenz.simplicity.constraint.Characters._
+
+import scalaz.\/
 
 /**
- * Created by David J. Dudson on 21/01/15.
+ * Created by David J. Dudson on 26/01/15.
  *
- *
+ * Standard Unary types of characters
  */
-trait Alpha extends Constraint {
+object UnaryType {
+
+  type UpperAlpha = UppercaseA \/ UppercaseB \/ UppercaseC \/ UppercaseD \/ UppercaseE \/ UppercaseF \/ UppercaseG \/ UppercaseH \/ UppercaseI \/
+    UppercaseJ \/ UppercaseK \/ UppercaseL \/ UppercaseM \/ UppercaseN \/ UppercaseO \/ UppercaseP \/ UppercaseQ \/ UppercaseR \/
+    UppercaseS \/ UppercaseT \/ UppercaseU \/ UppercaseV \/ UppercaseW \/ UppercaseX \/ UppercaseY \/ UppercaseZ
+
+  type LowerAlpha = LowercaseA \/ LowercaseB \/ LowercaseC \/ LowercaseD \/ LowercaseE \/ LowercaseF \/ LowercaseG \/ LowercaseH \/ LowercaseI \/
+    LowercaseJ \/ LowercaseK \/ LowercaseL \/ LowercaseM \/ LowercaseN \/ LowercaseO \/ LowercaseP \/ LowercaseQ \/ LowercaseR \/
+    LowercaseS \/ LowercaseT \/ LowercaseU \/ LowercaseV \/ LowercaseW \/ LowercaseX \/ LowercaseY \/ LowercaseZ
+
+  type Alpha = LowerAlpha \/ UpperAlpha
 
 }

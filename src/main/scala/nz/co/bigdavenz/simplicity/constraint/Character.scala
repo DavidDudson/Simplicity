@@ -29,13 +29,16 @@
 
 package nz.co.bigdavenz.simplicity.constraint
 
+import nz.co.bigdavenz.simplicity.primitives.Hex
+import nz.co.bigdavenz.simplicity.primitives.pimps.CharPimp._
+import nz.co.bigdavenz.simplicity.primitives.pimps.IntPimp._
 import nz.co.bigdavenz.simplicity.traits.{HasAbbreviation, HasName}
-import shapeless.{HNil, Nat}
+import shapeless.HNil
 
 /**
  * Created by David J. Dudson on 4/02/15.
  *
- * How 
+ * Unicode Characters
  */
 
 trait HasChar {
@@ -45,9 +48,7 @@ trait HasChar {
 }
 
 trait HasUnicode extends HasChar {
-  val unicode: Nat = char.toInt
-
-  //Replace By Hex
+  val unicode: Hex = char.toHex
   override def toString: String = s"${super.toString} \n Unicode: $unicode"
 }
 
@@ -65,15 +66,14 @@ sealed trait UnicodeCharacter extends Character with HasUnicode {
 }
 
 sealed trait UnicodeCharacterBlock {
-  val start: Nat
-  //Replace by hex
-  val end: Nat //Replace by hex
+  val start: Hex
+  val end: Hex
 }
 
 case object CharacterBlockLatin extends UnicodeCharacterBlock {
 
-  override val start: Int = 0
-  override val end: Int = 1
+  override val start: Hex = Null.unicode
+  override val end: Hex = (-1).toHex
 
   sealed trait Null extends UnicodeCharacter with HasAbbreviation
 
@@ -90,9 +90,5 @@ object CharacterImplicits {
   implicit class CharImpl[A <: Character](a: A) {
     def append[B <: Character](b: B) = a :: b :: HNil
   }
-
-}
-
-object Character {
 
 }

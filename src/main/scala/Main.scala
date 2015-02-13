@@ -28,7 +28,7 @@
  */
 
 import nz.co.bigdavenz.simplicity.constraint.CharacterBlockLatin._
-
+import nz.co.bigdavenz.simplicity.primitives.pimps.IntPimp._
 
 /**
  * Created by David J. Dudson on 19/01/15.
@@ -38,5 +38,8 @@ import nz.co.bigdavenz.simplicity.constraint.CharacterBlockLatin._
 
 object Main extends App {
 
- println(Null.toString)
+ println(Null.unicode)
+
+ for (i ← 1 to 321) println(s"Dec: $i Hex: ${i.toHex} Binary: ${i.toBinary}")
+
 }

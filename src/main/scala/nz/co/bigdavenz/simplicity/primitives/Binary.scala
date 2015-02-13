@@ -27,16 +27,20 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-package nz.co.bigdavenz.simplicity.traits
+package nz.co.bigdavenz.simplicity.primitives
+
+import nz.co.bigdavenz.simplicity.primitives.Radix._
 
 /**
- * Created by David J. Dudson on 10/02/15.
+ * Created by David J. Dudson on 13/02/15.
  *
- *
+ * Binary Representation of an Int
  */
-trait HasAbbreviation {
-  val abbreviation: String
+class Binary(val i: Int) extends AnyVal {
 
-  //Todo Replace By Alpha
-  override def toString: String = s"${super.toString} \n Abbreviation: $abbreviation"
+  override def toString: String = radixFormat(radixConverter(i, 2) map (_.toString), 4).reduceLeft(_ ++ _)
+}
+
+object Binary {
+  def apply(i: Int) = new Binary(i)
 }

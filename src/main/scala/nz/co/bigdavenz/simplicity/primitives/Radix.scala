@@ -27,16 +27,36 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-package nz.co.bigdavenz.simplicity.traits
+package nz.co.bigdavenz.simplicity.primitives
+
+import scala.annotation.tailrec
+
 
 /**
- * Created by David J. Dudson on 10/02/15.
+ * Created by David J. Dudson on 12/02/15.
  *
- *
+ * Radix Conversions
  */
-trait HasAbbreviation {
-  val abbreviation: String
 
-  //Todo Replace By Alpha
-  override def toString: String = s"${super.toString} \n Abbreviation: $abbreviation"
+object Radix {
+  /**
+   * Convert any int value to any other base
+   * @param number Value to Convert
+   * @param radix Base to Convert to
+   * @return List of Integers which each element is of that base. This is so that any bases over 10 can be represented
+   */
+  def radixConverter(number: Int, radix: Int): List[Int] = {
+    number < radix match {
+      case true ⇒ List(number)
+      case _ ⇒ radixConverter(number / radix, radix) :+ (number % radix)
+    }
+  }
+
+  @tailrec
+  def radixFormat(list: List[String], remainder: Int, startOfString: String = ""): List[String] = {
+    list.length % remainder match {
+      case 0 ⇒ startOfString +: list
+      case _ ⇒ radixFormat("0" +: list, remainder, startOfString)
+    }
+  }
 }

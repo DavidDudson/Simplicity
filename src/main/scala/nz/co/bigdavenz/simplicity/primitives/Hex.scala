@@ -27,16 +27,23 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-package nz.co.bigdavenz.simplicity.traits
+package nz.co.bigdavenz.simplicity.primitives
+
+import nz.co.bigdavenz.simplicity.primitives.Radix._
 
 /**
- * Created by David J. Dudson on 10/02/15.
+ * Created by David J. Dudson on 12/02/15.
  *
- *
+ * Hex Primitive, merely an int class which has a few misc methods added to it, including a pretty toString
  */
-trait HasAbbreviation {
-  val abbreviation: String
+class Hex(val hex: Int) extends AnyVal {
 
-  //Todo Replace By Alpha
-  override def toString: String = s"${super.toString} \n Abbreviation: $abbreviation"
+  override def toString: String = radixFormat(radixConverter(hex, 16) map (Hex.hexDigits(_)), 4, "0x").reduceLeft(_ ++ _)
+
+}
+
+object Hex {
+  val hexDigits: Array[String] = Array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F")
+
+  def apply(i: Int) = new Hex(i)
 }

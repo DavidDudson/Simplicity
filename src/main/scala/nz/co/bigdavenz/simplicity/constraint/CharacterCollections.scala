@@ -38,7 +38,5 @@ object CharacterCollections {
 
   object CharVector {
     def apply[Bound <: CharType](a: Bound): Vector[Bound] = Vector[Bound](a)
-
-    //def apply[Bound <: CharType](a:Bound*):Vector[Bound] = Vector[Bound](a)
   }
 }

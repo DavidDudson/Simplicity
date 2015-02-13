@@ -27,16 +27,13 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-package nz.co.bigdavenz.simplicity.traits
+package nz.co.bigdavenz.simplicity.constraint
 
 /**
- * Created by David J. Dudson on 10/02/15.
+ * Created by David J. Dudson on 12/02/15.
  *
  *
  */
-trait HasAbbreviation {
-  val abbreviation: String
+object UnsafeCharOps {
 
-  //Todo Replace By Alpha
-  override def toString: String = s"${super.toString} \n Abbreviation: $abbreviation"
 }

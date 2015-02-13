@@ -27,16 +27,25 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-package nz.co.bigdavenz.simplicity.traits
+package nz.co.bigdavenz.simplicity.primitives.pimps
+
+import nz.co.bigdavenz.simplicity.primitives.Radix._
+import nz.co.bigdavenz.simplicity.primitives.{Binary, Hex}
 
 /**
- * Created by David J. Dudson on 10/02/15.
+ * Created by David J. Dudson on 12/02/15.
  *
  *
  */
-trait HasAbbreviation {
-  val abbreviation: String
+object IntPimp {
 
-  //Todo Replace By Alpha
-  override def toString: String = s"${super.toString} \n Abbreviation: $abbreviation"
+  implicit class IntPimp(i: Int) {
+
+    def toHex: Hex = Hex(i)
+
+    def toBinary = Binary(i)
+
+    def toRadix(r: Int) = radixConverter(i, r)
+  }
+
 }

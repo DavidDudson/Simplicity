@@ -27,25 +27,25 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-package nz.co.bigdavenz.simplicity.primitives.pimps
+package nz.co.bigdavenz.simplicity.pimps
 
-import nz.co.bigdavenz.simplicity.primitives.Radix._
-import nz.co.bigdavenz.simplicity.primitives.{Binary, Hex}
+import nz.co.bigdavenz.simplicity.constraint.{CharacterGroup, UnicodeCharacter}
+import nz.co.bigdavenz.simplicity.primitives.{Decimal, Hex}
 
 /**
  * Created by David J. Dudson on 12/02/15.
  *
- *
+ * Extensions to Char class
  */
-object IntPimp {
+object CharPimp {
 
-  implicit class IntPimp(i: Int) {
+  implicit class CharPimp(c: Char) {
 
-    def toHex: Hex = Hex(i)
+    def toDecimal = Decimal(c.toInt)
 
-    def toBinary = Binary(i)
+    def toUnicodeChar: UnicodeCharacter = CharacterGroup.AllCharacters.find(_.unicode == c.toHex).get
 
-    def toRadix(r: Int) = radixConverter(i, r)
+    def toHex: Hex = Hex(c.toInt)
   }
 
 }

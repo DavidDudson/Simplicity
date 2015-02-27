@@ -52,11 +52,18 @@ object Radix {
     }
   }
 
+  /**
+   * Format a number with appropriate 0's added and appended start. Used for Hex/Binary/Decimal
+   * @param list The list of characters to format
+   * @param remainder The required number of character multiples
+   * @param startOfString The string to be appended to the final string
+   * @return The completed list of string with attached starting string. eg. 0x01A1.
+   */
   @tailrec
-  def radixFormat(list: List[String], remainder: Int, startOfString: String = ""): List[String] = {
+  def radixFormat(list: List[String], remainder: Int, startOfString: String = "", endOfString: String = ""): String = {
     list.length % remainder match {
-      case 0 ⇒ startOfString +: list
-      case _ ⇒ radixFormat("0" +: list, remainder, startOfString)
+      case 0 ⇒ startOfString ++ list.flatten ++ endOfString
+      case _ ⇒ radixFormat("0" +: list, remainder, startOfString, endOfString)
     }
   }
 }

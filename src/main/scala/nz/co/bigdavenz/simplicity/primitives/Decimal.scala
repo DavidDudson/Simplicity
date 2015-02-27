@@ -27,20 +27,21 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-package nz.co.bigdavenz.simplicity.primitives.pimps
-
-import nz.co.bigdavenz.simplicity.primitives.Hex
+package nz.co.bigdavenz.simplicity.primitives
 
 /**
- * Created by David J. Dudson on 12/02/15.
+ * Created by David J. Dudson on 23/02/15.
  *
- * Extensions to Char class
+ * Decimal class for Representing characters unicode characters to use in HTML only!
  */
-object CharPimp {
+class Decimal(i: Int) {
 
-  implicit class CharPimp(c: Char) {
+  override def toString: String = Radix.radixFormat((for (char <- i.toString) yield char.toString).toList, 3, "&#", ";")
 
-    def toHex: Hex = Hex(c.toInt)
-  }
+}
+
+
+object Decimal {
+  def apply(i: Int) = new Decimal(i)
 
 }

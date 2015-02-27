@@ -10,7 +10,8 @@ libraryDependencies ++= Seq(
   "org.scalaz" %% "scalaz-core" % "7.1.0",
   "com.chuusai" %% "shapeless" % "2.0.0",
   "org.improving" %% s"psp-std" % "0.4.8",
-  "org.typelevel" %% "shapeless-scalaz" % "0.3"
+  "org.typelevel" %% "shapeless-scalaz" % "0.3",
+  "org.jsoup" % "jsoup" % "1.8.1"
 )
 
 initialCommands in console := "import psp.std._"

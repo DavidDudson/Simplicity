@@ -27,19 +27,19 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-import nz.co.bigdavenz.simplicity.constraint.CharacterBlockLatin._
-import nz.co.bigdavenz.simplicity.primitives.pimps.IntPimp._
+
+import nz.co.bigdavenz.simplicity.pimps.CharPimp._
+import nz.co.bigdavenz.simplicity.pimps.StringPimp._
 
 /**
  * Created by David J. Dudson on 19/01/15.
  *
- * Main App for running
+ * Main App for Testing/Running etc
  */
 
 object Main extends App {
 
- println(Null.unicode)
+ println("The Quick Brown Fox Jumps Over The Lazy Dog".toUnicodeString)
 
- for (i ← 1 to 321) println(s"Dec: $i Hex: ${i.toHex} Binary: ${i.toBinary}")
-
+ println('a'.toUnicodeChar)
 }

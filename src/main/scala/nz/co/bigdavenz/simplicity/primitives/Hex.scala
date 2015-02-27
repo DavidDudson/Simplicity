@@ -38,7 +38,9 @@ import nz.co.bigdavenz.simplicity.primitives.Radix._
  */
 class Hex(val hex: Int) extends AnyVal {
 
-  override def toString: String = radixFormat(radixConverter(hex, 16) map (Hex.hexDigits(_)), 4, "0x").reduceLeft(_ ++ _)
+  override def toString: String = radixFormat(radixConverter(hex, 16) map (Hex.hexDigits(_)), 4, "0x")
+
+  def toUnicodeString: String = radixFormat(radixConverter(hex, 16) map (Hex.hexDigits(_)), 4, "U+")
 
 }
 

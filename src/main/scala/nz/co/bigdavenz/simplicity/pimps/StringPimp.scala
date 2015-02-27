@@ -27,27 +27,22 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-package nz.co.bigdavenz.simplicity.constraint
+package nz.co.bigdavenz.simplicity.pimps
 
-import nz.co.bigdavenz.simplicity.constraint.Characters._
-
-import scalaz.\/
+import nz.co.bigdavenz.simplicity.constraint.CharacterGroup.CharString
+import nz.co.bigdavenz.simplicity.constraint.UnicodeCharacter
 
 /**
- * Created by David J. Dudson on 26/01/15.
+ * Created by David J. Dudson on 27/02/15.
  *
- * Standard Unary types of characters
+ * String Pimps
  */
-object UnaryType {
 
-  type UpperAlpha = UppercaseA \/ UppercaseB \/ UppercaseC \/ UppercaseD \/ UppercaseE \/ UppercaseF \/ UppercaseG \/ UppercaseH \/ UppercaseI \/
-    UppercaseJ \/ UppercaseK \/ UppercaseL \/ UppercaseM \/ UppercaseN \/ UppercaseO \/ UppercaseP \/ UppercaseQ \/ UppercaseR \/
-    UppercaseS \/ UppercaseT \/ UppercaseU \/ UppercaseV \/ UppercaseW \/ UppercaseX \/ UppercaseY \/ UppercaseZ
+object StringPimp {
 
-  type LowerAlpha = LowercaseA \/ LowercaseB \/ LowercaseC \/ LowercaseD \/ LowercaseE \/ LowercaseF \/ LowercaseG \/ LowercaseH \/ LowercaseI \/
-    LowercaseJ \/ LowercaseK \/ LowercaseL \/ LowercaseM \/ LowercaseN \/ LowercaseO \/ LowercaseP \/ LowercaseQ \/ LowercaseR \/
-    LowercaseS \/ LowercaseT \/ LowercaseU \/ LowercaseV \/ LowercaseW \/ LowercaseX \/ LowercaseY \/ LowercaseZ
+  implicit class StringPimp(s: String) {
 
-  type Alpha = LowerAlpha \/ UpperAlpha
+    def toUnicodeString[T <: UnicodeCharacter] = CharString[T](s)
+  }
 
 }

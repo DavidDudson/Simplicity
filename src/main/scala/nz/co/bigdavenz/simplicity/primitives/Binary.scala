@@ -38,7 +38,7 @@ import nz.co.bigdavenz.simplicity.primitives.Radix._
  */
 class Binary(val i: Int) extends AnyVal {
 
-  override def toString: String = radixFormat(radixConverter(i, 2) map (_.toString), 4).reduceLeft(_ ++ _)
+  override def toString: String = radixFormat(radixConverter(i, 2) map (_.toString), 4)
 }
 
 object Binary {

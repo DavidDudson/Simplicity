@@ -27,16 +27,27 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-package nz.co.bigdavenz.simplicity.constraint
+package nz.co.bigdavenz.simplicity.pimps
+
+import nz.co.bigdavenz.simplicity.primitives.Radix._
+import nz.co.bigdavenz.simplicity.primitives.{Binary, Decimal, Hex}
 
 /**
- * Created by David J. Dudson on 31/01/15.
+ * Created by David J. Dudson on 12/02/15.
  *
  *
  */
-object CharacterCollections {
+object IntPimp {
 
-  object CharVector {
-    def apply[Bound <: CharType](a: Bound): Vector[Bound] = Vector[Bound](a)
+  implicit class IntPimp(i: Int) {
+
+    def toHex: Hex = Hex(i)
+
+    def toBinary = Binary(i)
+
+    def toRadix(r: Int) = radixConverter(i, r)
+
+    def toDecimal = Decimal(i)
   }
+
 }
